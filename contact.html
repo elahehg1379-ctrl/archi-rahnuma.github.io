@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تماس با ما - آرچی‌رهنما</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* استایل‌های عمومی */
+        :root {
+            --primary: #2F3645;
+            --secondary: #3A6D8C;
+            --accent: #D4B483;
+            --background: #F5F5F5;
+            --text: #333333;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-accent:hover {
+            background-color: #c19f6b;
+        }
+
+        /* استایل هدر */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .search-box input {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* استایل بنر تماس با ما */
+        .contact-hero {
+            background: linear-gradient(rgba(47, 54, 69, 0.8), rgba(47, 54, 69, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232F3645"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%233A6D8C" stroke-width="1"/></svg>');
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* استایل محتوای اصلی تماس */
+        .contact-content {
+            padding: 80px 0;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        /* استایل بخش اطلاعات تماس */
+        .contact-info {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+
+        .contact-info h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .contact-details p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .contact-details a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-details a:hover {
+            color: var(--accent);
+        }
+
+        .social-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-contact a {
+            width: 45px;
+            height: 45px;
+            background: var(--background);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .social-contact a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* استایل بخش فرم تماس */
+        .contact-form-section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form-section h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-form-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--background);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(58, 109, 140, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* استایل بخش نقشه و اطلاعات بیشتر */
+        .map-section {
+            margin-bottom: 60px;
+        }
+
+        .map-container {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .map-placeholder h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* استایل بخش سوالات متداول */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .faq-item h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-item h3 i {
+            color: var(--accent);
+            margin-left: 10px;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* استایل بخش تیم پشتیبانی */
+        .support-team {
+            margin-bottom: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+
+        .team-member h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .team-member p {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .team-member .contact-info {
+            background: none;
+            box-shadow: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .team-member .contact-item {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: none;
+        }
+
+        .team-member .contact-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 1rem;
+            margin-left: 10px;
+        }
+
+        /* استایل بخش خبرنامه */
+        .newsletter {
+            padding: 60px 0;
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #e0c295;
+        }
+
+        /* استایل فوتر */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* استایل‌های ریسپانسیو */
+        @media (max-width: 992px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .search-box {
+                margin-left: auto;
+            }
+            
+            .contact-hero {
+                padding: 60px 0;
+            }
+            
+            .contact-info, .contact-form-section {
+                padding: 30px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر سایت -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- لوگو SVG -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="60" height="60" fill="#D4B483" stroke="#2F3645" stroke-width="3"/>
+                    <rect x="30" y="30" width="40" height="40" fill="#3A6D8C" stroke="#2F3645" stroke-width="2"/>
+                    <rect x="40" y="40" width="20" height="20" fill="#F5F5F5" stroke="#2F3645" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="40" y2="40" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="80" y1="20" x2="60" y2="40" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="20" y1="80" x2="40" y2="60" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="80" y1="80" x2="60" y2="60" stroke="#2F3645" stroke-width="2"/>
+                </svg>
+                <h1>آرچی‌<span>رهنما</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="articles.html">مقالات</a></li>
+                    <li><a href="tutorials.html">آموزش‌ها</a></li>
+                    <li><a href="projects.html">پروژه‌ها</a></li>
+                    <li><a href="library.html">کتابخانه</a></li>
+                    <li><a href="about.html">درباره ما</a></li>
+                    <li><a href="contact.html" class="active">تماس با ما</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="جستجو...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- بخش هیرو تماس با ما -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>تماس با آرچی‌رهنما</h1>
+            <p>ما اینجا هستیم تا به سوالات شما پاسخ دهیم و در زمینه معماری و طراحی همراهتان باشیم</p>
+        </div>
+    </section>
+
+    <!-- محتوای اصلی تماس -->
+    <section class="contact-content">
+        <div class="container">
+            <!-- بخش اصلی اطلاعات تماس و فرم -->
+            <div class="contact-layout">
+                <!-- اطلاعات تماس -->
+                <div class="contact-info">
+                    <h2>اطلاعات تماس</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>آدرس دفتر مرکزی</h3>
+                            <p>تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>
+                            <p>طبقه چهارم، واحد ۱۲</p>
+                            <p>کد پستی: ۱۲۳۴۵۶۷۸۹۰</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>تلفن‌های تماس</h3>
+                            <p><a href="tel:+982112345678">۰۲۱-۱۲۳۴۵۶۷۸</a></p>
+                            <p><a href="tel:+989121234567">۰۹۱۲-۱۲۳۴۵۶۷</a></p>
+                            <p>شنبه تا چهارشنبه: ۹ صبح تا ۶ عصر</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>راه‌های ارتباطی</h3>
+                            <p><a href="mailto:info@archirahnama.ir">info@archirahnama.ir</a></p>
+                            <p><a href="mailto:support@archirahnama.ir">support@archirahnama.ir</a></p>
+                            <p>پاسخگویی: ۲۴ ساعته</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>ساعات کاری</h3>
+                            <p>شنبه تا چهارشنبه: ۹:۰۰ - ۱۸:۰۰</p>
+                            <p>پنجشنبه: ۹:۰۰ - ۱۴:۰۰</p>
+                            <p>جمعه‌ها: تعطیل</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-contact">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <!-- فرم تماس -->
+                <div class="contact-form-section">
+                    <h2>پیام به ما</h2>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">نام *</label>
+                                <input type="text" id="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">نام خانوادگی *</label>
+                                <input type="text" id="lastName" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">ایمیل *</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">تلفن همراه</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">موضوع *</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">انتخاب موضوع</option>
+                                <option value="consultation">مشاوره معماری</option>
+                                <option value="training">دوره‌های آموزشی</option>
+                                <option value="collaboration">همکاری</option>
+                                <option value="support">پشتیبانی</option>
+                                <option value="other">سایر</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">پیام شما *</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-accent" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i>
+                                ارسال پیام
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- بخش نقشه -->
+            <div class="map-section">
+                <div class="section-title">
+                    <h2>موقعیت ما روی نقشه</h2>
+                </div>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>نقشه دفتر مرکزی</h3>
+                        <p>تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>
+                        <p>دسترسی آسان از طریق مترو و اتوبوس</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- بخش سوالات متداول -->
+            <div class="faq-section">
+                <div class="section-title">
+                    <h2>سوالات متداول</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> چگونه می‌توانم از خدمات مشاوره استفاده کنم؟</h3>
+                        <p>برای استفاده از خدمات مشاوره، می‌توانید از طریق فرم تماس درخواست خود را ثبت کنید یا با شماره‌های دفتر تماس بگیرید. کارشناسان ما در اولین فرصت با شما تماس خواهند گرفت.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> آیا امکان بازدید از پروژه‌های اجرا شده وجود دارد؟</h3>
+                        <p>بله، با هماهنگی قبلی می‌توانید از برخی از پروژه‌های اجرا شده بازدید کنید. لطفاً حداقل ۴۸ ساعت قبل از بازدید با ما هماهنگ کنید.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> دوره‌های آموزشی به چه صورت برگزار می‌شوند؟</h3>
+                        <p>دوره‌های آموزشی هم به صورت حضوری و هم آنلاین برگزار می‌شوند. شما می‌توانید با توجه به شرایط خود، فرمت مناسب را انتخاب کنید.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> آیا امکان همکاری با آرچی‌رهنما وجود دارد؟</h3>
+                        <p>بله، ما همواره از همکاری با معماران و متخصصان خلاق استقبال می‌کنیم. رزومه خود را به آدرس ایمیل همکاری ارسال کنید.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- بخش تیم پشتیبانی -->
+            <div class="support-team">
+                <div class="section-title">
+                    <h2>تیم پشتیبانی ما</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>نگین احمدی</h3>
+                        <p>مدیر پشتیبانی</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <p><a href="tel:+989121234568">۰۹۱۲-۱۲۳۴۵۶۸</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>محمدرضا حسینی</h3>
+                        <p>کارشناس پشتیبانی</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <p><a href="tel:+989121234569">۰۹۱۲-۱۲۳۴۵۶۹</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>سارا کریمی</h3>
+                        <p>مشاور آموزشی</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <p><a href="tel:+989121234570">۰۹۱۲-۱۲۳۴۵۷۰</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش خبرنامه -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>عضویت در خبرنامه آرچی‌رهنما</h3>
+                <p>با عضویت در خبرنامه، از جدیدترین مقالات، آموزش‌ها و رویدادهای معماری مطلع شوید.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="آدرس ایمیل خود را وارد کنید" required>
+                    <button type="submit">عضویت</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر سایت -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>درباره آرچی‌رهنما</h4>
+                    <p>آرچی‌رهنما یک پلتفرم تخصصی در زمینه معماری و طراحی داخلی است که با هدف ارائه محتوای باکیفیت و کاربردی برای معماران، دانشجویان و علاقه‌مندان به این حوزه ایجاد شده است.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>لینک‌های سریع</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="articles.html">مقالات و بلاگ</a></li>
+                        <li><a href="tutorials.html">آموزش‌ها</a></li>
+                        <li><a href="projects.html">پروژه‌ها</a></li>
+                        <li><a href="library.html">کتابخانه منابع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>خدمات ما</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">مشاوره معماری</a></li>
+                        <li><a href="#">طراحی داخلی</a></li>
+                        <li><a href="#">بازسازی و نوسازی</a></li>
+                        <li><a href="#">نظارت بر اجرا</a></li>
+                        <li><a href="#">طراحی نما</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>تماس با ما</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳۴</li>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@archirahnamā.ir</li>
+                        <li><i class="fas fa-clock"></i> شنبه تا چهارشنبه: ۹ صبح تا ۶ عصر</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>کلیه حقوق مادی و معنوی این سایت متعلق به آرچی‌رهنما می‌باشد. © ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // مدیریت منوی موبایل
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        // مدیریت فرم تماس
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // جمع‌آوری داده‌های فرم
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // اعتبارسنجی ساده
+            if (!formData.firstName || !formData.lastName || !formData.email || !formData.subject || !formData.message) {
+                alert('لطفاً تمام فیلدهای ضروری را پر کنید.');
+                return;
+            }
+            
+            // شبیه‌سازی ارسال فرم
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
+            submitBtn.disabled = true;
+            
+            // شبیه‌سازی تاخیر در ارسال
+            setTimeout(() => {
+                // نمایش پیام موفقیت
+                alert('پیام شما با موفقیت ارسال شد. در اسرع وقت با شما تماس خواهیم گرفت.');
+                
+                // بازنشانی فرم
+                this.reset();
+                
+                // بازگرداندن دکمه به حالت اول
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // لاگ داده‌های فرم در کنسول (برای تست)
+                console.log('فرم تماس ارسال شد:', formData);
+            }, 2000);
+        });
+
+        // اعتبارسنجی ایمیل
+        document.getElementById('email').addEventListener('blur', function() {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = 'red';
+                // می‌توانید پیام خطا هم نمایش دهید
+            } else {
+                this.style.borderColor = '#ddd';
+            }
+        });
+
+        // اعتبارسنجی تلفن
+        document.getElementById('phone').addEventListener('blur', function() {
+            const phone = this.value;
+            const phoneRegex = /^[\d\s\-()+]{10,}$/;
+            
+            if (phone && !phoneRegex.test(phone)) {
+                this.style.borderColor = 'red';
+            } else {
+                this.style.borderColor = '#ddd';
+            }
+        });
+
+        // پیمایش صاف برای لینک‌ها
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // انیمیشن برای آیتم‌های FAQ
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // مدیریت فرم خبرنامه
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            if (email) {
+                alert(`ایمیل ${email} با موفقیت در خبرنامه ثبت شد.`);
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html>

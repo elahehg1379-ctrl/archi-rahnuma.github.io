@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش‌ها - آرچی‌رهنما</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* استایل‌های عمومی */
+        :root {
+            --primary: #2F3645;
+            --secondary: #3A6D8C;
+            --accent: #D4B483;
+            --background: #F5F5F5;
+            --text: #333333;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-accent:hover {
+            background-color: #c19f6b;
+        }
+
+        /* استایل هدر */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .search-box input {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* استایل بنر آموزش‌ها */
+        .tutorials-hero {
+            background: linear-gradient(rgba(47, 54, 69, 0.8), rgba(47, 54, 69, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232F3645"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%233A6D8C" stroke-width="1"/></svg>');
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .tutorials-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .tutorials-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* استایل محتوای اصلی آموزش‌ها */
+        .tutorials-content {
+            padding: 80px 0;
+        }
+
+        .tutorials-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+
+        /* استایل سایدبار فیلترها */
+        .tutorials-sidebar {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .categories-list {
+            list-style: none;
+        }
+
+        .categories-list li {
+            margin-bottom: 10px;
+        }
+
+        .categories-list a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .categories-list a:hover {
+            color: var(--secondary);
+            padding-right: 10px;
+        }
+
+        .categories-list .count {
+            background: var(--background);
+            color: var(--secondary);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .levels-list {
+            list-style: none;
+        }
+
+        .levels-list li {
+            margin-bottom: 10px;
+        }
+
+        .levels-list a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .levels-list a:hover {
+            color: var(--secondary);
+            padding-right: 10px;
+        }
+
+        .levels-list .count {
+            background: var(--background);
+            color: var(--secondary);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .popular-tutorials {
+            list-style: none;
+        }
+
+        .popular-tutorials li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .popular-tutorials li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .popular-tutorials a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .popular-tutorials a:hover {
+            color: var(--secondary);
+        }
+
+        .tutorial-date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* استایل بخش اصلی آموزش‌ها */
+        .tutorials-main {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .tutorials-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: var(--white);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .search-tutorials {
+            position: relative;
+        }
+
+        .search-tutorials input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            width: 250px;
+            background: var(--white);
+        }
+
+        .search-tutorials button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .tutorials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .tutorial-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .tutorial-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tutorial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .tutorial-card:hover .tutorial-image img {
+            transform: scale(1.1);
+        }
+
+        .tutorial-level {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+
+        .tutorial-content {
+            padding: 20px;
+        }
+
+        .tutorial-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .tutorial-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .tutorial-instructor {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .instructor-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .tutorial-duration {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tutorial-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .tutorial-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .tutorial-tag {
+            background-color: var(--background);
+            color: var(--secondary);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+        }
+
+        .tutorial-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+        }
+
+        .action-btn:hover {
+            color: var(--secondary);
+        }
+
+        /* استایل صفحه‌بندی */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* استایل بخش خبرنامه */
+        .newsletter {
+            padding: 60px 0;
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #e0c295;
+        }
+
+        /* استایل فوتر */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* استایل‌های ریسپانسیو */
+        @media (max-width: 992px) {
+            .tutorials-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tutorials-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .tutorials-sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .tutorials-main {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .search-box {
+                margin-left: auto;
+            }
+            
+            .tutorials-hero {
+                padding: 60px 0;
+            }
+            
+            .tutorials-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-tutorials input {
+                width: 100%;
+            }
+            
+            .tutorials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .tutorials-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر سایت -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- لوگو SVG -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="60" height="60" fill="#D4B483" stroke="#2F3645" stroke-width="3"/>
+                    <rect x="30" y="30" width="40" height="40" fill="#3A6D8C" stroke="#2F3645" stroke-width="2"/>
+                    <rect x="40" y="40" width="20" height="20" fill="#F5F5F5" stroke="#2F3645" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="40" y2="40" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="80" y1="20" x2="60" y2="40" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="20" y1="80" x2="40" y2="60" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="80" y1="80" x2="60" y2="60" stroke="#2F3645" stroke-width="2"/>
+                </svg>
+                <h1>آرچی‌<span>رهنما</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="articles.html">مقالات</a></li>
+                    <li><a href="tutorials.html" class="active">آموزش‌ها</a></li>
+                    <li><a href="projects.html">پروژه‌ها</a></li>
+                    <li><a href="library.html">کتابخانه</a></li>
+                    <li><a href="about.html">درباره ما</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="جستجو...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- بخش هیرو آموزش‌ها -->
+    <section class="tutorials-hero">
+        <div class="container">
+            <h1>آموزش‌های تخصصی معماری</h1>
+            <p>مرجع جامع آموزش‌های ویدیویی، دوره‌های آنلاین و منابع یادگیری در زمینه معماری، طراحی داخلی و نرم‌افزارهای تخصصی</p>
+        </div>
+    </section>
+
+    <!-- محتوای اصلی آموزش‌ها -->
+    <section class="tutorials-content">
+        <div class="container">
+            <div class="tutorials-layout">
+                <!-- بخش اصلی آموزش‌ها -->
+                <div class="tutorials-main">
+                    <!-- فیلترها و جستجو -->
+                    <div class="tutorials-filters">
+                        <div class="filter-options">
+                            <select class="filter-select" id="categoryFilter">
+                                <option value="all">همه دسته‌بندی‌ها</option>
+                                <!-- با JS پر می‌شود -->
+                            </select>
+                            <select class="filter-select" id="levelFilter">
+                                <option value="all">همه سطوح</option>
+                                <!-- با JS پر می‌شود -->
+                            </select>
+                            <select class="filter-select" id="sortFilter">
+                                <option value="newest">جدیدترین</option>
+                                <option value="popular">محبوب‌ترین</option>
+                                <option value="duration">کوتاه‌ترین</option>
+                            </select>
+                        </div>
+                        <div class="search-tutorials">
+                            <input type="text" placeholder="جستجو در آموزش‌ها..." id="searchInput">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- شبکه آموزش‌ها -->
+                    <div class="tutorials-grid" id="tutorialsGrid">
+                        <!-- آموزش‌ها با JS پر می‌شوند -->
+                    </div>
+                    
+                    <!-- صفحه‌بندی -->
+                    <div class="pagination" id="pagination">
+                        <!-- صفحه‌بندی با JS پر می‌شود -->
+                    </div>
+                </div>
+                
+                <!-- سایدبار -->
+                <div class="tutorials-sidebar">
+                    <!-- دسته‌بندی‌ها -->
+                    <div class="sidebar-section">
+                        <h3>دسته‌بندی‌ها</h3>
+                        <ul class="categories-list" id="categoriesList">
+                            <!-- با JS پر می‌شود -->
+                        </ul>
+                    </div>
+                    
+                    <!-- سطوح آموزشی -->
+                    <div class="sidebar-section">
+                        <h3>سطوح آموزشی</h3>
+                        <ul class="levels-list" id="levelsList">
+                            <!-- با JS پر می‌شود -->
+                        </ul>
+                    </div>
+                    
+                    <!-- آموزش‌های محبوب -->
+                    <div class="sidebar-section">
+                        <h3>آموزش‌های پربازدید</h3>
+                        <ul class="popular-tutorials" id="popularTutorials">
+                            <!-- با JS پر می‌شود -->
+                        </ul>
+                    </div>
+                    
+                    <!-- خبرنامه -->
+                    <div class="sidebar-section">
+                        <h3>خبرنامه</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 15px;">با عضویت در خبرنامه از جدیدترین آموزش‌ها مطلع شوید</p>
+                        <form class="newsletter-form" style="flex-direction: column; gap: 10px;">
+                            <input type="email" placeholder="آدرس ایمیل" required style="border-radius: 4px;">
+                            <button type="submit" style="border-radius: 4px; padding: 10px;">عضویت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش خبرنامه -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>عضویت در خبرنامه آرچی‌رهنما</h3>
+                <p>با عضویت در خبرنامه، از جدیدترین آموزش‌ها، مقالات و رویدادهای معماری مطلع شوید.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="آدرس ایمیل خود را وارد کنید" required>
+                    <button type="submit">عضویت</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر سایت -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>درباره آرچی‌رهنما</h4>
+                    <p>آرچی‌رهنما یک پلتفرم تخصصی در زمینه معماری و طراحی داخلی است که با هدف ارائه محتوای باکیفیت و کاربردی برای معماران، دانشجویان و علاقه‌مندان به این حوزه ایجاد شده است.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>لینک‌های سریع</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="articles.html">مقالات و بلاگ</a></li>
+                        <li><a href="tutorials.html">آموزش‌ها</a></li>
+                        <li><a href="projects.html">پروژه‌ها</a></li>
+                        <li><a href="library.html">کتابخانه منابع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>خدمات ما</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">مشاوره معماری</a></li>
+                        <li><a href="#">طراحی داخلی</a></li>
+                        <li><a href="#">بازسازی و نوسازی</a></li>
+                        <li><a href="#">نظارت بر اجرا</a></li>
+                        <li><a href="#">طراحی نما</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>تماس با ما</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳۴</li>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@archirahnamā.ir</li>
+                        <li><i class="fas fa-clock"></i> شنبه تا چهارشنبه: ۹ صبح تا ۶ عصر</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>کلیه حقوق مادی و معنوی این سایت متعلق به آرچی‌رهنما می‌باشد. © ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // داده‌های کامل آموزش‌ها
+        const tutorialsData = [
+            {
+                id: 1,
+                title: "آموزش Revit برای مبتدیان - از صفر تا صد",
+                excerpt: "یادگیری اصول اولیه نرم‌افزار Revit برای طراحی معماری. این دوره شامل مباحث مدلسازی، رندرینگ و مستندسازی پروژه است.",
+                category: "نرم‌افزارهای معماری",
+                level: "مبتدی",
+                tags: ["Revit", "مدلسازی", "BIM"],
+                image: "https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۵/۱۰",
+                instructor: "مهندس کریمی",
+                instructorInitials: "ک",
+                duration: "۴ ساعت",
+                students: 1250,
+                rating: 4.8,
+                isPopular: true
+            },
+            {
+                id: 2,
+                title: "طراحی پارامتریک در Rhino و Grasshopper",
+                excerpt: "آموزش تکنیک‌های پیشرفته طراحی پارامتریک برای معماران. این دوره شامل الگوریتم‌های پیچیده و کاربردهای عملی است.",
+                category: "طراحی پارامتریک",
+                level: "پیشرفته",
+                tags: ["Rhino", "Grasshopper", "پارامتریک"],
+                image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۵/۰۸",
+                instructor: "دکتر محمدی",
+                instructorInitials: "م",
+                duration: "۶ ساعت",
+                students: 890,
+                rating: 4.9,
+                isPopular: true
+            },
+            {
+                id: 3,
+                title: "رندرینگ حرفه‌ای با V-Ray برای معماری",
+                excerpt: "آموزش ایجاد رندرهای واقع‌گرا با استفاده از V-Ray برای معماری. شامل تنظیمات نور، متریال و دوربین برای خروجی حرفه‌ای.",
+                category: "رندرینگ و ویژوالیزیشن",
+                level: "متوسط",
+                tags: ["V-Ray", "رندرینگ", "واقع‌گرا"],
+                image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۵/۰۵",
+                instructor: "مهندس رضایی",
+                instructorInitials: "ر",
+                duration: "۵ ساعت",
+                students: 2100,
+                rating: 4.7,
+                isPopular: true
+            },
+            {
+                id: 4,
+                title: "طراحی سازه‌های چوبی در معماری مدرن",
+                excerpt: "آموزش اصول طراحی و اجرای سازه‌های چوبی در معماری. بررسی سیستم‌های ساختاری و جزئیات اجرایی.",
+                category: "سازه و اجرا",
+                level: "متوسط",
+                tags: ["سازه چوبی", "اجرا", "مصالح"],
+                image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۵/۰۲",
+                instructor: "مهندس حسینی",
+                instructorInitials: "ح",
+                duration: "۳ ساعت",
+                students: 750,
+                rating: 4.6,
+                isPopular: false
+            },
+            {
+                id: 5,
+                title: "آموزش SketchUp برای طراحی سریع",
+                excerpt: "یادگیری تکنیک‌های سریع طراحی و مدلسازی در SketchUp. مناسب برای ارائه ایده‌های اولیه و طراحی مفهومی.",
+                category: "نرم‌افزارهای معماری",
+                level: "مبتدی",
+                tags: ["SketchUp", "مدلسازی سریع", "طراحی مفهومی"],
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۴/۲۸",
+                instructor: "مهندس احمدی",
+                instructorInitials: "ا",
+                duration: "۲.۵ ساعت",
+                students: 1800,
+                rating: 4.5,
+                isPopular: false
+            },
+            {
+                id: 6,
+                title: "اصول نورپردازی در معماری داخلی",
+                excerpt: "بررسی اصول و تکنیک‌های نورپردازی در فضاهای داخلی. شامل نور طبیعی، نور مصنوعی و تأثیرات روانشناختی نور.",
+                category: "معماری داخلی",
+                level: "متوسط",
+                tags: ["نورپردازی", "داخلی", "روانشناسی نور"],
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۴/۲۵",
+                instructor: "دکتر نوروزی",
+                instructorInitials: "ن",
+                duration: "۳.۵ ساعت",
+                students: 1100,
+                rating: 4.8,
+                isPopular: true
+            },
+            {
+                id: 7,
+                title: "طراحی پایدار و معماری سبز",
+                excerpt: "آموزش اصول طراحی پایدار و کاربرد آن در معماری معاصر. بررسی سیستم‌های انرژی و مصالح سازگار با محیط زیست.",
+                category: "معماری پایدار",
+                level: "پیشرفته",
+                tags: ["پایداری", "سبز", "انرژی"],
+                image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۴/۲۰",
+                instructor: "دکتر سبزوار",
+                instructorInitials: "س",
+                duration: "۴.۵ ساعت",
+                students: 950,
+                rating: 4.7,
+                isPopular: false
+            },
+            {
+                id: 8,
+                title: "مدیریت پروژه‌های معماری با Primavera",
+                excerpt: "آموزش استفاده از نرم‌افزار Primavera برای برنامه‌ریزی و کنترل پروژه‌های معماری. شامل زمان‌بندی، منابع و هزینه‌ها.",
+                category: "مدیریت پروژه",
+                level: "متوسط",
+                tags: ["Primavera", "مدیریت پروژه", "زمان‌بندی"],
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۴/۱۵",
+                instructor: "مهندس نظری",
+                instructorInitials: "ن",
+                duration: "۵ ساعت",
+                students: 680,
+                rating: 4.4,
+                isPopular: false
+            }
+        ];
+
+        // داده‌های دسته‌بندی‌ها
+        const categoriesData = [
+            { name: "نرم‌افزارهای معماری", count: 12 },
+            { name: "طراحی پارامتریک", count: 8 },
+            { name: "رندرینگ و ویژوالیزیشن", count: 10 },
+            { name: "سازه و اجرا", count: 7 },
+            { name: "معماری داخلی", count: 9 },
+            { name: "معماری پایدار", count: 6 },
+            { name: "مدیریت پروژه", count: 5 },
+            { name: "تاریخ و نظریه معماری", count: 4 }
+        ];
+
+        // داده‌های سطوح آموزشی
+        const levelsData = [
+            { name: "مبتدی", count: 15 },
+            { name: "متوسط", count: 22 },
+            { name: "پیشرفته", count: 10 }
+        ];
+
+        // تابع برای نمایش آموزش‌ها
+        function displayTutorials(tutorials) {
+            const tutorialsGrid = document.getElementById('tutorialsGrid');
+            tutorialsGrid.innerHTML = '';
+            
+            tutorials.forEach(tutorial => {
+                const tutorialCard = document.createElement('div');
+                tutorialCard.className = 'tutorial-card';
+                
+                tutorialCard.innerHTML = `
+                    <div class="tutorial-image">
+                        <img src="${tutorial.image}" alt="${tutorial.title}">
+                        <span class="tutorial-level">${tutorial.level}</span>
+                    </div>
+                    <div class="tutorial-content">
+                        <h3 class="tutorial-title">${tutorial.title}</h3>
+                        <p class="tutorial-excerpt">${tutorial.excerpt}</p>
+                        <div class="tutorial-meta">
+                            <div class="tutorial-instructor">
+                                <div class="instructor-avatar">${tutorial.instructorInitials}</div>
+                                <span>${tutorial.instructor}</span>
+                            </div>
+                            <div class="tutorial-duration">
+                                <i class="far fa-clock"></i>
+                                <span>${tutorial.duration}</span>
+                            </div>
+                        </div>
+                        <div class="tutorial-footer">
+                            <div class="tutorial-tags">
+                                ${tutorial.tags.map(tag => `<span class="tutorial-tag">${tag}</span>`).join('')}
+                            </div>
+                            <div class="tutorial-actions">
+                                <button class="action-btn">
+                                    <i class="far fa-heart"></i>
+                                    <span>${tutorial.students}</span>
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-star"></i>
+                                    <span>${tutorial.rating}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                tutorialsGrid.appendChild(tutorialCard);
+            });
+        }
+
+        // تابع برای نمایش دسته‌بندی‌ها در سایدبار
+        function displayCategories() {
+            const categoriesList = document.getElementById('categoriesList');
+            categoriesList.innerHTML = '';
+            
+            categoriesData.forEach(category => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="#">
+                        ${category.name}
+                        <span class="count">${category.count}</span>
+                    </a>
+                `;
+                categoriesList.appendChild(listItem);
+            });
+        }
+
+        // تابع برای نمایش سطوح آموزشی در سایدبار
+        function displayLevels() {
+            const levelsList = document.getElementById('levelsList');
+            levelsList.innerHTML = '';
+            
+            levelsData.forEach(level => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="#">
+                        ${level.name}
+                        <span class="count">${level.count}</span>
+                    </a>
+                `;
+                levelsList.appendChild(listItem);
+            });
+        }
+
+        // تابع برای نمایش آموزش‌های محبوب در سایدبار
+        function displayPopularTutorials() {
+            const popularTutorials = document.getElementById('popularTutorials');
+            popularTutorials.innerHTML = '';
+            
+            const popular = tutorialsData.filter(tutorial => tutorial.isPopular);
+            
+            popular.forEach(tutorial => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="#">${tutorial.title}</a>
+                    <div class="tutorial-date">${tutorial.date}</div>
+                `;
+                popularTutorials.appendChild(listItem);
+            });
+        }
+
+        // تابع برای پر کردن فیلترهای دسته‌بندی
+        function populateCategoryFilter() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            
+            categoriesData.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.name;
+                option.textContent = category.name;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        // تابع برای پر کردن فیلترهای سطح آموزشی
+        function populateLevelFilter() {
+            const levelFilter = document.getElementById('levelFilter');
+            
+            levelsData.forEach(level => {
+                const option = document.createElement('option');
+                option.value = level.name;
+                option.textContent = level.name;
+                levelFilter.appendChild(option);
+            });
+        }
+
+        // تابع برای فیلتر کردن آموزش‌ها
+        function filterTutorials() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const levelFilter = document.getElementById('levelFilter').value;
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const sortFilter = document.getElementById('sortFilter').value;
+            
+            let filteredTutorials = tutorialsData.filter(tutorial => {
+                const matchesCategory = categoryFilter === 'all' || tutorial.category === categoryFilter;
+                const matchesLevel = levelFilter === 'all' || tutorial.level === levelFilter;
+                const matchesSearch = tutorial.title.toLowerCase().includes(searchInput) || 
+                                     tutorial.excerpt.toLowerCase().includes(searchInput) ||
+                                     tutorial.tags.some(tag => tag.toLowerCase().includes(searchInput));
+                
+                return matchesCategory && matchesLevel && matchesSearch;
+            });
+            
+            // مرتب‌سازی
+            if (sortFilter === 'newest') {
+                filteredTutorials.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else if (sortFilter === 'popular') {
+                filteredTutorials.sort((a, b) => b.students - a.students);
+            } else if (sortFilter === 'duration') {
+                filteredTutorials.sort((a, b) => parseFloat(a.duration) - parseFloat(b.duration));
+            }
+            
+            displayTutorials(filteredTutorials);
+        }
+
+        // تابع برای مدیریت منوی موبایل
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+
+        // تابع برای راه‌اندازی صفحه‌بندی
+        function setupPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            // ایجاد دکمه‌های صفحه‌بندی ساده
+            const prevBtn = document.createElement('a');
+            prevBtn.href = '#';
+            prevBtn.className = 'page-btn';
+            prevBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            pagination.appendChild(prevBtn);
+            
+            for (let i = 1; i <= 3; i++) {
+                const pageBtn = document.createElement('a');
+                pageBtn.href = '#';
+                pageBtn.className = 'page-btn' + (i === 1 ? ' active' : '');
+                pageBtn.textContent = i;
+                pagination.appendChild(pageBtn);
+            }
+            
+            const nextBtn = document.createElement('a');
+            nextBtn.href = '#';
+            nextBtn.className = 'page-btn';
+            nextBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            pagination.appendChild(nextBtn);
+        }
+
+        // راه‌اندازی اولیه
+        document.addEventListener('DOMContentLoaded', () => {
+            // نمایش داده‌ها
+            displayTutorials(tutorialsData);
+            displayCategories();
+            displayLevels();
+            displayPopularTutorials();
+            
+            // پر کردن فیلترها
+            populateCategoryFilter();
+            populateLevelFilter();
+            
+            // تنظیم رویدادها
+            document.getElementById('categoryFilter').addEventListener('change', filterTutorials);
+            document.getElementById('levelFilter').addEventListener('change', filterTutorials);
+            document.getElementById('sortFilter').addEventListener('change', filterTutorials);
+            document.getElementById('searchInput').addEventListener('input', filterTutorials);
+            
+            // تنظیم منوی موبایل
+            setupMobileMenu();
+            
+            // تنظیم صفحه‌بندی
+            setupPagination();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کتابخانه منابع - آرچی‌رهنما</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* استایل‌های عمومی */
+        :root {
+            --primary: #2F3645;
+            --secondary: #3A6D8C;
+            --accent: #D4B483;
+            --background: #F5F5F5;
+            --text: #333333;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-accent:hover {
+            background-color: #c19f6b;
+        }
+
+        /* استایل هدر */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .search-box input {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* استایل بنر کتابخانه */
+        .library-hero {
+            background: linear-gradient(rgba(47, 54, 69, 0.8), rgba(47, 54, 69, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232F3645"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%233A6D8C" stroke-width="1"/></svg>');
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .library-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .library-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* استایل محتوای اصلی کتابخانه */
+        .library-content {
+            padding: 80px 0;
+        }
+
+        .library-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+
+        /* استایل سایدبار فیلترها */
+        .library-sidebar {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .categories-list {
+            list-style: none;
+        }
+
+        .categories-list li {
+            margin-bottom: 10px;
+        }
+
+        .categories-list a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .categories-list a:hover {
+            color: var(--secondary);
+            padding-right: 10px;
+        }
+
+        .categories-list .count {
+            background: var(--background);
+            color: var(--secondary);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .formats-list {
+            list-style: none;
+        }
+
+        .formats-list li {
+            margin-bottom: 10px;
+        }
+
+        .formats-list a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .formats-list a:hover {
+            color: var(--secondary);
+            padding-right: 10px;
+        }
+
+        .formats-list .count {
+            background: var(--background);
+            color: var(--secondary);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .popular-resources {
+            list-style: none;
+        }
+
+        .popular-resources li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .popular-resources li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .popular-resources a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .popular-resources a:hover {
+            color: var(--secondary);
+        }
+
+        .resource-date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* استایل بخش اصلی کتابخانه */
+        .library-main {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .library-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: var(--white);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .search-library {
+            position: relative;
+        }
+
+        .search-library input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            width: 250px;
+            background: var(--white);
+        }
+
+        .search-library button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .resource-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resource-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .resource-card:hover .resource-image img {
+            transform: scale(1.1);
+        }
+
+        .resource-format {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+
+        .resource-content {
+            padding: 20px;
+        }
+
+        .resource-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .resource-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .resource-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .resource-size {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .resource-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .resource-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .resource-tag {
+            background-color: var(--background);
+            color: var(--secondary);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+        }
+
+        .resource-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+        }
+
+        .action-btn:hover {
+            color: var(--secondary);
+        }
+
+        /* استایل صفحه‌بندی */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* استایل بخش خبرنامه */
+        .newsletter {
+            padding: 60px 0;
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #e0c295;
+        }
+
+        /* استایل فوتر */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* استایل‌های ریسپانسیو */
+        @media (max-width: 992px) {
+            .library-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .library-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .library-sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .library-main {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .search-box {
+                margin-left: auto;
+            }
+            
+            .library-hero {
+                padding: 60px 0;
+            }
+            
+            .library-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-library input {
+                width: 100%;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .library-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر سایت -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- لوگو SVG -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="60" height="60" fill="#D4B483" stroke="#2F3645" stroke-width="3"/>
+                    <rect x="30" y="30" width="40" height="40" fill="#3A6D8C" stroke="#2F3645" stroke-width="2"/>
+                    <rect x="40" y="40" width="20" height="20" fill="#F5F5F5" stroke="#2F3645" stroke-width="1"/>
+                    <line x1="20" y1="20" x2="40" y2="40" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="80" y1="20" x2="60" y2="40" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="20" y1="80" x2="40" y2="60" stroke="#2F3645" stroke-width="2"/>
+                    <line x1="80" y1="80" x2="60" y2="60" stroke="#2F3645" stroke-width="2"/>
+                </svg>
+                <h1>آرچی‌<span>رهنما</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="articles.html">مقالات</a></li>
+                    <li><a href="tutorials.html">آموزش‌ها</a></li>
+                    <li><a href="projects.html">پروژه‌ها</a></li>
+                    <li><a href="library.html" class="active">کتابخانه</a></li>
+                    <li><a href="about.html">درباره ما</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="جستجو...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- بخش هیرو کتابخانه -->
+    <section class="library-hero">
+        <div class="container">
+            <h1>کتابخانه منابع تخصصی معماری</h1>
+            <p>مرجع جامع کتاب‌ها، استانداردها، نمونه‌ها و منابع آموزشی در زمینه معماری، طراحی داخلی و مهندسی ساختمان</p>
+        </div>
+    </section>
+
+    <!-- محتوای اصلی کتابخانه -->
+    <section class="library-content">
+        <div class="container">
+            <div class="library-layout">
+                <!-- بخش اصلی کتابخانه -->
+                <div class="library-main">
+                    <!-- فیلترها و جستجو -->
+                    <div class="library-filters">
+                        <div class="filter-options">
+                            <select class="filter-select" id="categoryFilter">
+                                <option value="all">همه دسته‌بندی‌ها</option>
+                                <!-- با JS پر می‌شود -->
+                            </select>
+                            <select class="filter-select" id="formatFilter">
+                                <option value="all">همه فرمت‌ها</option>
+                                <!-- با JS پر می‌شود -->
+                            </select>
+                            <select class="filter-select" id="sortFilter">
+                                <option value="newest">جدیدترین</option>
+                                <option value="popular">محبوب‌ترین</option>
+                                <option value="name">نام الفبایی</option>
+                            </select>
+                        </div>
+                        <div class="search-library">
+                            <input type="text" placeholder="جستجو در منابع..." id="searchInput">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- شبکه منابع -->
+                    <div class="resources-grid" id="resourcesGrid">
+                        <!-- منابع با JS پر می‌شوند -->
+                    </div>
+                    
+                    <!-- صفحه‌بندی -->
+                    <div class="pagination" id="pagination">
+                        <!-- صفحه‌بندی با JS پر می‌شود -->
+                    </div>
+                </div>
+                
+                <!-- سایدبار -->
+                <div class="library-sidebar">
+                    <!-- دسته‌بندی‌ها -->
+                    <div class="sidebar-section">
+                        <h3>دسته‌بندی‌ها</h3>
+                        <ul class="categories-list" id="categoriesList">
+                            <!-- با JS پر می‌شود -->
+                        </ul>
+                    </div>
+                    
+                    <!-- فرمت‌ها -->
+                    <div class="sidebar-section">
+                        <h3>فرمت‌ها</h3>
+                        <ul class="formats-list" id="formatsList">
+                            <!-- با JS پر می‌شود -->
+                        </ul>
+                    </div>
+                    
+                    <!-- منابع محبوب -->
+                    <div class="sidebar-section">
+                        <h3>منابع پربازدید</h3>
+                        <ul class="popular-resources" id="popularResources">
+                            <!-- با JS پر می‌شود -->
+                        </ul>
+                    </div>
+                    
+                    <!-- خبرنامه -->
+                    <div class="sidebar-section">
+                        <h3>خبرنامه</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 15px;">با عضویت در خبرنامه از جدیدترین منابع مطلع شوید</p>
+                        <form class="newsletter-form" style="flex-direction: column; gap: 10px;">
+                            <input type="email" placeholder="آدرس ایمیل" required style="border-radius: 4px;">
+                            <button type="submit" style="border-radius: 4px; padding: 10px;">عضویت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش خبرنامه -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>عضویت در خبرنامه آرچی‌رهنما</h3>
+                <p>با عضویت در خبرنامه، از جدیدترین منابع، مقالات و رویدادهای معماری مطلع شوید.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="آدرس ایمیل خود را وارد کنید" required>
+                    <button type="submit">عضویت</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر سایت -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>درباره آرچی‌رهنما</h4>
+                    <p>آرچی‌رهنما یک پلتفرم تخصصی در زمینه معماری و طراحی داخلی است که با هدف ارائه محتوای باکیفیت و کاربردی برای معماران، دانشجویان و علاقه‌مندان به این حوزه ایجاد شده است.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>لینک‌های سریع</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="articles.html">مقالات و بلاگ</a></li>
+                        <li><a href="tutorials.html">آموزش‌ها</a></li>
+                        <li><a href="projects.html">پروژه‌ها</a></li>
+                        <li><a href="library.html">کتابخانه منابع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>خدمات ما</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">مشاوره معماری</a></li>
+                        <li><a href="#">طراحی داخلی</a></li>
+                        <li><a href="#">بازسازی و نوسازی</a></li>
+                        <li><a href="#">نظارت بر اجرا</a></li>
+                        <li><a href="#">طراحی نما</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>تماس با ما</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳۴</li>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@archirahnamā.ir</li>
+                        <li><i class="fas fa-clock"></i> شنبه تا چهارشنبه: ۹ صبح تا ۶ عصر</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>کلیه حقوق مادی و معنوی این سایت متعلق به آرچی‌رهنما می‌باشد. © ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // داده‌های کامل منابع
+        const resourcesData = [
+            {
+                id: 1,
+                title: "کتاب اصول طراحی معماری پایدار",
+                excerpt: "مرجع کامل اصول طراحی پایدار در معماری معاصر با تمرکز بر کاهش مصرف انرژی و استفاده از مصالح سازگار با محیط زیست.",
+                category: "کتاب‌های تخصصی",
+                format: "PDF",
+                tags: ["پایداری", "طراحی", "انرژی"],
+                image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۵/۱۰",
+                author: "دکتر محمدی",
+                authorInitials: "م",
+                size: "۱۵.۲ مگابایت",
+                downloads: 1250,
+                rating: 4.8,
+                isPopular: true
+            },
+            {
+                id: 2,
+                title: "استانداردهای طراحی فضاهای آموزشی",
+                excerpt: "مجموعه کامل استانداردها و ضوابط طراحی فضاهای آموزشی از مهدکودک تا دانشگاه با جزئیات اجرایی.",
+                category: "استانداردها",
+                format: "PDF",
+                tags: ["استاندارد", "آموزشی", "فضا"],
+                image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۵/۰۸",
+                author: "مهندس کریمی",
+                authorInitials: "ک",
+                size: "۸.۷ مگابایت",
+                downloads: 980,
+                rating: 4.7,
+                isPopular: true
+            },
+            {
+                id: 3,
+                title: "کاتالوگ مصالح ساختمانی مدرن",
+                excerpt: "مجموعه کامل کاتالوگ مصالح ساختمانی مدرن با مشخصات فنی، کاربردها و نمونه‌های اجرا شده.",
+                category: "کاتالوگ‌ها",
+                format: "PDF",
+                tags: ["مصالح", "مدرن", "کاتالوگ"],
+                image: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۵/۰۵",
+                author: "مهندس رضایی",
+                authorInitials: "ر",
+                size: "۲۲.۳ مگابایت",
+                downloads: 2100,
+                rating: 4.9,
+                isPopular: true
+            },
+            {
+                id: 4,
+                title: "آموزش ویدیویی Revit Architecture",
+                excerpt: "دوره کامل آموزش نرم‌افزار Revit برای طراحی معماری از سطح مبتدی تا پیشرفته با پروژه‌های عملی.",
+                category: "آموزش‌های ویدیویی",
+                format: "MP4",
+                tags: ["Revit", "آموزش", "ویدیو"],
+                image: "https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۵/۰۲",
+                author: "مهندس حسینی",
+                authorInitials: "ح",
+                size: "۱.۲ گیگابایت",
+                downloads: 750,
+                rating: 4.6,
+                isPopular: false
+            },
+            {
+                id: 5,
+                title: "مجموعه بلوک‌های آماده اتوکد",
+                excerpt: "کتابخانه جامع بلوک‌های آماده اتوکد شامل مبلمان، در و پنجره، پرسوناز و المان‌های معماری.",
+                category: "بلوک‌های آماده",
+                format: "DWG",
+                tags: ["اتوکد", "بلوک", "مبلمان"],
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۴/۲۸",
+                author: "مهندس احمدی",
+                authorInitials: "ا",
+                size: "۴۵.۸ مگابایت",
+                downloads: 1800,
+                rating: 4.5,
+                isPopular: false
+            },
+            {
+                id: 6,
+                title: "کتاب تاریخ معماری معاصر ایران",
+                excerpt: "بررسی تحولات معماری معاصر ایران از دوره قاجار تا امروز با تحلیل نمونه‌های شاخص.",
+                category: "کتاب‌های تخصصی",
+                format: "PDF",
+                tags: ["تاریخ", "ایران", "معاصر"],
+                image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۴/۲۵",
+                author: "دکتر نوروزی",
+                authorInitials: "ن",
+                size: "۱۸.۹ مگابایت",
+                downloads: 1100,
+                rating: 4.8,
+                isPopular: true
+            },
+            {
+                id: 7,
+                title: "استانداردهای طراحی بیمارستان",
+                excerpt: "مجموعه کامل استانداردهای طراحی فضاهای درمانی و بیمارستانی با جزئیات فنی و اجرایی.",
+                category: "استانداردها",
+                format: "PDF",
+                tags: ["بیمارستان", "استاندارد", "درمانی"],
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۴/۲۰",
+                author: "دکتر سبزوار",
+                authorInitials: "س",
+                size: "۱۲.۴ مگابایت",
+                downloads: 950,
+                rating: 4.7,
+                isPopular: false
+            },
+            {
+                id: 8,
+                title: "کاتالوگ سیستم‌های نورپردازی",
+                excerpt: "مجموعه کامل کاتالوگ سیستم‌های نورپردازی داخلی و خارجی با مشخصات فنی و نمونه‌های اجرا شده.",
+                category: "کاتالوگ‌ها",
+                format: "PDF",
+                tags: ["نورپردازی", "کاتالوگ", "سیستم"],
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                date: "۱۴۰۲/۰۴/۱۵",
+                author: "مهندس نظری",
+                authorInitials: "ن",
+                size: "۲۸.۱ مگابایت",
+                downloads: 680,
+                rating: 4.4,
+                isPopular: false
+            }
+        ];
+
+        // داده‌های دسته‌بندی‌ها
+        const categoriesData = [
+            { name: "کتاب‌های تخصصی", count: 25 },
+            { name: "استانداردها", count: 18 },
+            { name: "کاتالوگ‌ها", count: 32 },
+            { name: "آموزش‌های ویدیویی", count: 15 },
+            { name: "بلوک‌های آماده", count: 42 },
+            { name: "نمونه‌های اجرا", count: 28 },
+            { name: "تحقیقات و پایان‌نامه‌ها", count: 12 },
+            { name: "نقشه‌ها و پلان‌ها", count: 35 }
+        ];
+
+        // داده‌های فرمت‌ها
+        const formatsData = [
+            { name: "PDF", count: 85 },
+            { name: "DWG", count: 42 },
+            { name: "MP4", count: 15 },
+            { name: "JPG", count: 120 },
+            { name: "ZIP", count: 28 },
+            { name: "DOC", count: 18 }
+        ];
+
+        // تابع برای نمایش منابع
+        function displayResources(resources) {
+            const resourcesGrid = document.getElementById('resourcesGrid');
+            resourcesGrid.innerHTML = '';
+            
+            resources.forEach(resource => {
+                const resourceCard = document.createElement('div');
+                resourceCard.className = 'resource-card';
+                
+                resourceCard.innerHTML = `
+                    <div class="resource-image">
+                        <img src="${resource.image}" alt="${resource.title}">
+                        <span class="resource-format">${resource.format}</span>
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">${resource.title}</h3>
+                        <p class="resource-excerpt">${resource.excerpt}</p>
+                        <div class="resource-meta">
+                            <div class="resource-author">
+                                <div class="author-avatar">${resource.authorInitials}</div>
+                                <span>${resource.author}</span>
+                            </div>
+                            <div class="resource-size">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span>${resource.size}</span>
+                            </div>
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-tags">
+                                ${resource.tags.map(tag => `<span class="resource-tag">${tag}</span>`).join('')}
+                            </div>
+                            <div class="resource-actions">
+                                <button class="action-btn">
+                                    <i class="fas fa-download"></i>
+                                    <span>${resource.downloads}</span>
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-star"></i>
+                                    <span>${resource.rating}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                resourcesGrid.appendChild(resourceCard);
+            });
+        }
+
+        // تابع برای نمایش دسته‌بندی‌ها در سایدبار
+        function displayCategories() {
+            const categoriesList = document.getElementById('categoriesList');
+            categoriesList.innerHTML = '';
+            
+            categoriesData.forEach(category => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="#">
+                        ${category.name}
+                        <span class="count">${category.count}</span>
+                    </a>
+                `;
+                categoriesList.appendChild(listItem);
+            });
+        }
+
+        // تابع برای نمایش فرمت‌ها در سایدبار
+        function displayFormats() {
+            const formatsList = document.getElementById('formatsList');
+            formatsList.innerHTML = '';
+            
+            formatsData.forEach(format => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="#">
+                        ${format.name}
+                        <span class="count">${format.count}</span>
+                    </a>
+                `;
+                formatsList.appendChild(listItem);
+            });
+        }
+
+        // تابع برای نمایش منابع محبوب در سایدبار
+        function displayPopularResources() {
+            const popularResources = document.getElementById('popularResources');
+            popularResources.innerHTML = '';
+            
+            const popular = resourcesData.filter(resource => resource.isPopular);
+            
+            popular.forEach(resource => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="#">${resource.title}</a>
+                    <div class="resource-date">${resource.date}</div>
+                `;
+                popularResources.appendChild(listItem);
+            });
+        }
+
+        // تابع برای پر کردن فیلترهای دسته‌بندی
+        function populateCategoryFilter() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            
+            categoriesData.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.name;
+                option.textContent = category.name;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        // تابع برای پر کردن فیلترهای فرمت
+        function populateFormatFilter() {
+            const formatFilter = document.getElementById('formatFilter');
+            
+            formatsData.forEach(format => {
+                const option = document.createElement('option');
+                option.value = format.name;
+                option.textContent = format.name;
+                formatFilter.appendChild(option);
+            });
+        }
+
+        // تابع برای فیلتر کردن منابع
+        function filterResources() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const formatFilter = document.getElementById('formatFilter').value;
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const sortFilter = document.getElementById('sortFilter').value;
+            
+            let filteredResources = resourcesData.filter(resource => {
+                const matchesCategory = categoryFilter === 'all' || resource.category === categoryFilter;
+                const matchesFormat = formatFilter === 'all' || resource.format === formatFilter;
+                const matchesSearch = resource.title.toLowerCase().includes(searchInput) || 
+                                     resource.excerpt.toLowerCase().includes(searchInput) ||
+                                     resource.tags.some(tag => tag.toLowerCase().includes(searchInput));
+                
+                return matchesCategory && matchesFormat && matchesSearch;
+            });
+            
+            // مرتب‌سازی
+            if (sortFilter === 'newest') {
+                filteredResources.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else if (sortFilter === 'popular') {
+                filteredResources.sort((a, b) => b.downloads - a.downloads);
+            } else if (sortFilter === 'name') {
+                filteredResources.sort((a, b) => a.title.localeCompare(b.title, 'fa'));
+            }
+            
+            displayResources(filteredResources);
+        }
+
+        // تابع برای مدیریت منوی موبایل
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+
+        // تابع برای راه‌اندازی صفحه‌بندی
+        function setupPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            // ایجاد دکمه‌های صفحه‌بندی ساده
+            const prevBtn = document.createElement('a');
+            prevBtn.href = '#';
+            prevBtn.className = 'page-btn';
+            prevBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            pagination.appendChild(prevBtn);
+            
+            for (let i = 1; i <= 3; i++) {
+                const pageBtn = document.createElement('a');
+                pageBtn.href = '#';
+                pageBtn.className = 'page-btn' + (i === 1 ? ' active' : '');
+                pageBtn.textContent = i;
+                pagination.appendChild(pageBtn);
+            }
+            
+            const nextBtn = document.createElement('a');
+            nextBtn.href = '#';
+            nextBtn.className = 'page-btn';
+            nextBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            pagination.appendChild(nextBtn);
+        }
+
+        // راه‌اندازی اولیه
+        document.addEventListener('DOMContentLoaded', () => {
+            // نمایش داده‌ها
+            displayResources(resourcesData);
+            displayCategories();
+            displayFormats();
+            displayPopularResources();
+            
+            // پر کردن فیلترها
+            populateCategoryFilter();
+            populateFormatFilter();
+            
+            // تنظیم رویدادها
+            document.getElementById('categoryFilter').addEventListener('change', filterResources);
+            document.getElementById('formatFilter').addEventListener('change', filterResources);
+            document.getElementById('sortFilter').addEventListener('change', filterResources);
+            document.getElementById('searchInput').addEventListener('input', filterResources);
+            
+            // تنظیم منوی موبایل
+            setupMobileMenu();
+            
+            // تنظیم صفحه‌بندی
+            setupPagination();
+        });
+    </script>
+</body>
+</html>
